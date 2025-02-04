@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine's Question</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f9e0e3;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      h1 {
+        margin-top: 50px;
+        color: #d9365c;
+      }
+      img {
+        width: 200px;
+        margin-top: 20px;
+      }
+      button {
+        margin: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        position: relative;
+        transition: transform 0.2s ease;
+      }
+      #yesButton {
+        background-color: #ff6b6b;
+        color: white;
+      }
+      #noButton {
+        background-color: #4ecdc4;
+        color: white;
+      }
+      #response {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #d9365c;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Do you want to be my Valentine?</h1>
+    <img
+      src="https://t4.ftcdn.net/jpg/01/26/87/43/360_F_126874388_AJgm8A83y9sDTN65M8bmuc6PYO8jPEnQ.jpg"
+      alt="Cute cat holding a heart"
+    />
+    <div>
+      <button id="yesButton">Yes</button>
+      <button id="noButton">No</button>
+    </div>
+    <div id="response"></div>
+
+    <script>
+      const yesButton = document.getElementById("yesButton");
+      const noButton = document.getElementById("noButton");
+      const responseDiv = document.getElementById("response");
+
+      yesButton.addEventListener("click", () => {
+        responseDiv.textContent = "Score! It's a date ❤️";
+      });
+
+      noButton.addEventListener("mouseover", () => {
+        moveNoButton();
+      });
+
+      function moveNoButton() {
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+
+        const randomX = Math.random() * (screenWidth - noButton.offsetWidth);
+        const randomY = Math.random() * (screenHeight - noButton.offsetHeight);
+
+        noButton.style.position = "absolute";
+        noButton.style.left = `${randomX}px`;
+        noButton.style.top = `${randomY}px`;
+      }
+
+      noButton.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent any default action
+        moveNoButton();
+      });
+    </script>
+  </body>
+</html>
